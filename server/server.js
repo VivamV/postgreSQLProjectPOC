@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ CREATE a user
+//  CREATE a user
 app.post("/users", async (req, res) => {
   try {
     const { name, email } = req.body;
@@ -23,7 +23,7 @@ app.post("/users", async (req, res) => {
   }
 });
 
-// ✅ READ all users
+//  READ all users
 app.get("/users", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM users");
@@ -34,7 +34,7 @@ app.get("/users", async (req, res) => {
   }
 });
 
-// ✅ READ one user
+//  READ one user
 app.get("/users/:id", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM users WHERE id = $1", [
@@ -47,7 +47,7 @@ app.get("/users/:id", async (req, res) => {
   }
 });
 
-// ✅ UPDATE user
+//  UPDATE user
 app.put("/users/:id", async (req, res) => {
   try {
     const { name, email } = req.body;
@@ -62,7 +62,7 @@ app.put("/users/:id", async (req, res) => {
   }
 });
 
-// ✅ DELETE user
+//  DELETE user
 app.delete("/users/:id", async (req, res) => {
   try {
     const result = await pool.query("DELETE FROM users WHERE id=$1 RETURNING *", [
